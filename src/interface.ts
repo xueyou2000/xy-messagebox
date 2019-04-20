@@ -79,9 +79,9 @@ export interface MessageBoxProps {
      */
     onClose?: Function;
     /**
-     * 关闭ref
+     * 获取关闭函数
      */
-    closeRef?: React.MutableRefObject<any>;
+    getCloseFunc?: (close: Function) => void;
 }
 
 export interface AlertProps extends MessageBoxProps {

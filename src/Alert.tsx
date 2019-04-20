@@ -31,20 +31,24 @@ function getIcon(type: MessageBoxType): IconDefinition {
 }
 
 export function Alert(props: AlertProps) {
-    const { prefixCls = "xy-messagebox-alert", className, initialFocus = ".alert-btn", footer, confirmText = MessageBoxLocal.confirmText, style, title, message, children, type, ...rest } = props;
-    const closeRef = useRef<Function>();
-    if (props.closeRef) {
-        props.closeRef.current = closeRef.current;
+    const { prefixCls = "xy-messagebox-alert", className, initialFocus = ".alert-btn", footer, confirmText = MessageBoxLocal.confirmText, style, title, message, children, type = "info", ...rest } = props;
+    let closeFunc: Function;
+
+    function getCloseFunc(close: Function) {
+        closeFunc = close;
+        if (props.getCloseFunc) {
+            props.getCloseFunc(closeHandle);
+        }
     }
 
     function closeHandle() {
-        if (closeRef.current) {
-            closeRef.current();
+        if (closeFunc) {
+            closeFunc();
         }
     }
 
     return (
-        <MessageBox {...rest} closeRef={closeRef} maskClose={false} initialFocus={initialFocus} className={classNames(prefixCls, className)}>
+        <MessageBox {...rest} getCloseFunc={getCloseFunc} maskClose={false} initialFocus={initialFocus} className={classNames(prefixCls, className)}>
             <div className="alert-content-wrapper" style={style}>
                 <div className="alert-body-wrapper">
                     <div className="alert-body">
@@ -52,8 +56,8 @@ export function Alert(props: AlertProps) {
                             <FontAwesomeIcon icon={getIcon(type)} />
                         </div>
                         <div className="alert-content">
-                            <p className="alert-content__title">{title}</p>
-                            <p className="alert-content__message">{message}</p>
+                            <div className="alert-content__title">{title}</div>
+                            <div className="alert-content__message">{message}</div>
                         </div>
                     </div>
                 </div>

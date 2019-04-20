@@ -20,7 +20,7 @@ export function MessageBox(props: MessageBoxProps) {
         onClose,
         closeOnPressEsc = true,
         onKeyDown,
-        closeRef,
+        getCloseFunc,
     } = props;
     const [renderPortal] = usePortal("", getContainer);
     const [visible, setVisible, isControll] = useControll(props, "visible", "defaultVisible");
@@ -59,10 +59,8 @@ export function MessageBox(props: MessageBoxProps) {
         }
     }
 
-    if (closeRef) {
-        closeRef.current = () => {
-            handleChange(false);
-        };
+    if (getCloseFunc) {
+        getCloseFunc(() => handleChange(false));
     }
 
     useEffect(() => {

@@ -1,7 +1,7 @@
 {
     "name": "xy-messagebox",
-    "version": "0.0.1",
-    "description": "基于React的基础组件",
+    "version": "0.0.2",
+    "description": "基于React的弹出框组件",
     "types": "es/index.d.ts",
     "main": "es/index.js",
     "module": "es/index.js",
@@ -68,7 +68,7 @@
     },
     "jest": {
         "transformIgnorePatterns": [
-            "<rootDir>/node_modules/(?!(utils-hooks|@fortawesome/react-fontawesome|@fortawesome/free-regular-svg-icons))"
+            "<rootDir>/node_modules/(?!(utils-hooks|xy-button|@fortawesome/react-fontawesome|@fortawesome/free-regular-svg-icons))"
         ]
     }
 }

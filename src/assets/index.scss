@@ -43,12 +43,14 @@ $--color-error: #f5222d !default;
         overflow: auto;
         box-sizing: border-box;
         flex-wrap: wrap;
+        pointer-events: none;
     }
 
     .#{$MessageBoxWarpPrefixCls}-content {
         animation: 0.3s messageboxZoomOut;
         transition: transform 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86), opacity 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86), box-shaow 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
-
+        pointer-events: auto;
+        
         &:focus {
             outline: none;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.175);

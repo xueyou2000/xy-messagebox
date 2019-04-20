@@ -20,21 +20,23 @@ function DefaultValidate(value: string) {
 
 export function Prompt(props: PromptProps) {
     const { prefixCls = "xy-messagebox-prompt", className, style, initialFocus = ".confirm-btn", valid = DefaultValidate, title = MessageBoxLocal.promptTitle, confirmText = MessageBoxLocal.confirmText, placeholder, defaultValue, message, cancelText = MessageBoxLocal.cancelText, onConfirm, onCancel, ...rest } = props;
-    const closeRef = useRef<Function>();
     const [loading, setLoading] = useState(false);
     const [validResult, setValidResult] = useState<boolean | string>(false);
     const valueRef = useRef(defaultValue);
     const classString = classNames(prefixCls, className, {
         'valid-fail': validResult,
     });
-
-    if (props.closeRef) {
-        props.closeRef.current = closeRef.current;
+    let closeFunc: Function;
+    function getCloseFunc(close: Function) {
+        closeFunc = close;
+        if (props.getCloseFunc) {
+            props.getCloseFunc(close);
+        }
     }
 
     function close() {
-        if (closeRef.current) {
-            closeRef.current();
+        if (closeFunc) {
+            closeFunc();
         }
     }
 
@@ -73,11 +75,11 @@ export function Prompt(props: PromptProps) {
     }
 
     return (
-        <MessageBox {...rest} closeRef={closeRef} maskClose={false} initialFocus={initialFocus} >
+        <MessageBox {...rest} getCloseFunc={getCloseFunc} maskClose={false} initialFocus={initialFocus} >
             <div className={classString} style={style}>
                 <p className="prompt-title">{title}</p>
                 <div className="prompt-body">
-                    <p className="prompt-message">{message}</p>
+                    <div className="prompt-message">{message}</div>
                     <input className="prompt-input" placeholder={placeholder} defaultValue={defaultValue || ''} onChange={changeHandle} />
                     {typeof validResult === 'string' && <p className="prompt-error">{validResult}</p>}
                 </div>

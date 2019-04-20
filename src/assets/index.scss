@@ -1,5 +1,16 @@
 $MessageBoxWarpPrefixCls: "xy-messagebox";
 $AlertWarpPrefixCls: "xy-messagebox-alert";
+$ConfirmWarpPrefixCls: "xy-messagebox-confirm";
+
+// info 色调
+$--color-info: #1890ff !default;
+// success 色调
+$--color-success: #19be6b !default;
+// warning 色调
+$--color-warning: #faad14 !default;
+// error 色调
+$--color-error: #f5222d !default;
+
 
 .#{$MessageBoxWarpPrefixCls} {
     position: fixed;
@@ -37,6 +48,11 @@ $AlertWarpPrefixCls: "xy-messagebox-alert";
         animation: 0.3s messageboxZoomOut;
         background: #fff;
         transition: transform 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86), opacity 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86), box-shaow 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.175);
+        }
     }
 }
 .#{$MessageBoxWarpPrefixCls}.use-container {
@@ -123,7 +139,6 @@ $AlertWarpPrefixCls: "xy-messagebox-alert";
     .alert-icon {
         font-size: 40px;
         margin-right: 16px;
-        color: #1890ff;
     }
     .alert-content__title {
         color: rgba(0, 0, 0, 0.85);
@@ -141,4 +156,26 @@ $AlertWarpPrefixCls: "xy-messagebox-alert";
         margin-bottom: 1em;
         word-break: break-word;
     }
+}
+
+.#{$ConfirmWarpPrefixCls} {
+    .alert-icon {
+        color: $--color-warning;
+    }
+}
+
+
+
+
+.icon-type-info {
+    color: $--color-info;
+}
+.icon-type-success {
+    color: $--color-success;
+}
+.icon-type-error {
+    color: $--color-error;
+}
+.icon-type-warning {
+    color: $--color-warning;
 }

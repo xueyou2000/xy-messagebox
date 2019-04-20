@@ -1,3 +1,5 @@
 export const MessageBoxLocal = {
-    okBtnText: "确定",
+    confirmText: "确定",
+    cancelText: "取消",
+    confirmTitle: "请确定",
 };

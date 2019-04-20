@@ -8,9 +8,12 @@ import { Button } from "xy-button";
 import "xy-button/assets/index.css";
 import { MessageBoxLocal } from "./Locale";
 
-function getIcon(type: MessageBoxType) {
+function getIcon(type: MessageBoxType): IconDefinition {
     let icon: IconDefinition;
     switch (type) {
+        case "info":
+            icon = faInfoCircle;
+            break;
         case "success":
             icon = faCheckCircle;
             break;
@@ -21,15 +24,18 @@ function getIcon(type: MessageBoxType) {
             icon = faExclamationCircle;
             break;
         default:
-            icon = faInfoCircle;
+            icon = type;
     }
 
     return icon;
 }
 
 export function Alert(props: AlertProps) {
-    const { prefixCls = "xy-messagebox-alert", className, okBtnText = MessageBoxLocal.okBtnText, style, title, message, children, type, onClose, ...rest } = props;
+    const { prefixCls = "xy-messagebox-alert", className, initialFocus = ".alert-btn", footer, confirmText = MessageBoxLocal.confirmText, style, title, message, children, type, ...rest } = props;
     const closeRef = useRef<Function>();
+    if (props.closeRef) {
+        props.closeRef.current = closeRef.current;
+    }
 
     function closeHandle() {
         if (closeRef.current) {
@@ -38,11 +44,11 @@ export function Alert(props: AlertProps) {
     }
 
     return (
-        <MessageBox {...rest} maskClose={false} initialFocus=".alert-btn" closeRef={closeRef} className={classNames(prefixCls, className)}>
+        <MessageBox {...rest} closeRef={closeRef} maskClose={false} initialFocus={initialFocus} className={classNames(prefixCls, className)}>
             <div className="alert-content-wrapper" style={style}>
                 <div className="alert-body-wrapper">
                     <div className="alert-body">
-                        <div className="alert-icon">
+                        <div className={classNames('alert-icon', { [`icon-type-${type}`]: typeof (type) === 'string' })}>
                             <FontAwesomeIcon icon={getIcon(type)} />
                         </div>
                         <div className="alert-content">
@@ -52,9 +58,11 @@ export function Alert(props: AlertProps) {
                     </div>
                 </div>
                 <div className="alert-footer">
-                    <Button className="alert-btn" onClick={closeHandle} type="primary">
-                        {okBtnText}
-                    </Button>
+                    {footer || (
+                        <Button className="alert-btn" onClick={closeHandle} type="primary">
+                            {confirmText}
+                        </Button>
+                    )}
                 </div>
             </div>
         </MessageBox>

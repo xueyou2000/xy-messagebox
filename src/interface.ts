@@ -1,4 +1,6 @@
-export type MessageBoxType = "info" | "success" | "error" | "warning";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+
+export type MessageBoxType = "info" | "success" | "error" | "warning" | IconDefinition;
 export type GetDrawerContainerFuc = () => HTMLElement;
 
 export interface MessageBoxProps {
@@ -73,6 +75,10 @@ export interface MessageBoxProps {
      */
     onUnmount?: Function;
     /**
+     * 关闭事件
+     */
+    onClose?: Function;
+    /**
      * 关闭ref
      */
     closeRef?: React.MutableRefObject<any>;
@@ -98,14 +104,18 @@ export interface AlertProps extends MessageBoxProps {
     /**
      * 确定按钮文本
      */
-    okBtnText?: string;
+    confirmText?: string;
+    /**
+     * 自定义页脚按钮
+     */
+    footer?: React.ReactNode;
 }
 
-export interface ConfirmProps {
+export interface ConfirmProps extends MessageBoxProps {
     /**
      * 标题
      */
-    title: React.ReactNode;
+    title?: React.ReactNode;
     /**
      * 内容
      */
@@ -119,9 +129,13 @@ export interface ConfirmProps {
      */
     cancelText?: React.ReactNode;
     /**
+     * 关闭事件
+     */
+    onClose?: Function;
+    /**
      * 确定事件
      */
-    onConfirm?: () => Promise<void>;
+    onConfirm?: () => Promise<any>;
     /**
      * 取消事件
      */

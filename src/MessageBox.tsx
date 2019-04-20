@@ -17,6 +17,7 @@ export function MessageBox(props: MessageBoxProps) {
         onChange,
         children,
         onUnmount,
+        onClose,
         closeOnPressEsc = true,
         onKeyDown,
         closeRef,
@@ -80,6 +81,9 @@ export function MessageBox(props: MessageBoxProps) {
             }
             if (onUnmount) {
                 onUnmount();
+            }
+            if (onClose) {
+                onClose();
             }
         }
     }, [state]);

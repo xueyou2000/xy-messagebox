@@ -1,0 +1,144 @@
+$MessageBoxWarpPrefixCls: "xy-messagebox";
+$AlertWarpPrefixCls: "xy-messagebox-alert";
+
+.#{$MessageBoxWarpPrefixCls} {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+
+    .#{$MessageBoxWarpPrefixCls}-mask {
+        background: #000;
+        opacity: 0;
+        width: 0;
+        height: 0;
+        top: 0;
+        position: fixed;
+        transition: opacity 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86), width 0s ease 0.3s, height 0s ease 0.3s;
+    }
+
+    .#{$MessageBoxWarpPrefixCls}-container-wrapper {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: auto;
+        box-sizing: border-box;
+        flex-wrap: wrap;
+    }
+
+    .#{$MessageBoxWarpPrefixCls}-content {
+        animation: 0.3s messageboxZoomOut;
+        background: #fff;
+        transition: transform 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86), opacity 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86), box-shaow 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+    }
+}
+.#{$MessageBoxWarpPrefixCls}.use-container {
+    position: absolute;
+
+    .#{$MessageBoxWarpPrefixCls}-mask,
+    .#{$MessageBoxWarpPrefixCls}-container-wrapper {
+        position: absolute;
+    }
+}
+.#{$MessageBoxWarpPrefixCls}-open {
+    .#{$MessageBoxWarpPrefixCls}-mask {
+        opacity: 0.3;
+        width: 100%;
+        height: 100%;
+        transition: none;
+    }
+
+    .#{$MessageBoxWarpPrefixCls}-content {
+        animation: 0.3s messageboxZoomIn;
+    }
+}
+
+.#{$MessageBoxWarpPrefixCls}-state-exited {
+    display: none;
+}
+
+@keyframes messageboxZoomIn {
+    0% {
+        opacity: 0;
+        transform-origin: 50% 50%;
+        transform: scale(0, 0);
+    }
+    100% {
+        opacity: 1;
+        transform-origin: 50% 50%;
+        transform: scale(1, 1);
+    }
+}
+@keyframes messageboxZoomOut {
+    0% {
+        opacity: 1;
+        transform-origin: 50% 50%;
+        transform: scale(1, 1);
+    }
+    100% {
+        opacity: 0;
+        transform-origin: 50% 50%;
+        transform: scale(0, 0);
+    }
+}
+
+/** Alert **/
+.#{$AlertWarpPrefixCls} {
+    .#{$MessageBoxWarpPrefixCls}-content {
+        background: transparent;
+    }
+    .alert-content-wrapper {
+        width: 420px;
+        background-color: #fff;
+        border-radius: 4px;
+        font-size: 18px;
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+        text-align: left;
+    }
+    .alert-body-wrapper {
+        position: relative;
+        padding: 10px 15px;
+        box-sizing: border-box;
+        color: #5a5e66;
+        font-size: 14px;
+    }
+    .alert-body {
+        padding: 22px 22px 24px;
+    }
+    .alert-footer {
+        padding: 10px 15px;
+        box-sizing: border-box;
+        text-align: right;
+    }
+    .alert-body {
+        display: flex;
+    }
+    .alert-icon {
+        font-size: 40px;
+        margin-right: 16px;
+        color: #1890ff;
+    }
+    .alert-content__title {
+        color: rgba(0, 0, 0, 0.85);
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 22px;
+        display: block;
+        overflow: auto;
+        margin: 0;
+    }
+    .alert-content__message {
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.65);
+        margin-top: 8px;
+        margin-bottom: 1em;
+        word-break: break-word;
+    }
+}

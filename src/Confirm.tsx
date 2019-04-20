@@ -8,7 +8,7 @@ import { MessageBoxLocal } from "./Locale";
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 
 export function Confirm(props: ConfirmProps) {
-    const { prefixCls = "xy-messagebox-confirm", className, style, title = MessageBoxLocal.confirmTitle, confirmText = MessageBoxLocal.confirmText, cancelText = MessageBoxLocal.cancelText, onConfirm, onCancel, ...rest } = props;
+    const { prefixCls = "xy-messagebox-confirm", className, style, initialFocus = ".confirm-btn", title = MessageBoxLocal.confirmTitle, confirmText = MessageBoxLocal.confirmText, cancelText = MessageBoxLocal.cancelText, onConfirm, onCancel, ...rest } = props;
     const closeRef = useRef<Function>();
     const [loading, setLoading] = useState(false);
 
@@ -60,7 +60,7 @@ export function Confirm(props: ConfirmProps) {
     }
 
     return (
-        <Alert {...rest} title={title} footer={renderFooter()} initialFocus=".confirm-btn" closeRef={closeRef} type={faQuestionCircle} className={classNames(prefixCls, className)} style={style} />
+        <Alert {...rest} title={title} footer={renderFooter()} initialFocus={initialFocus} closeRef={closeRef} type={faQuestionCircle} className={classNames(prefixCls, className)} style={style} />
     );
 }
 

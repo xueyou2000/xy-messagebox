@@ -129,10 +129,6 @@ export interface ConfirmProps extends MessageBoxProps {
      */
     cancelText?: React.ReactNode;
     /**
-     * 关闭事件
-     */
-    onClose?: Function;
-    /**
      * 确定事件
      */
     onConfirm?: () => Promise<any>;
@@ -140,4 +136,44 @@ export interface ConfirmProps extends MessageBoxProps {
      * 取消事件
      */
     onCancel?: Function;
+}
+
+export interface PromptProps extends MessageBoxProps {
+    /**
+     * 标题
+     */
+    title?: React.ReactNode;
+    /**
+     * 内容
+     */
+    message: React.ReactNode;
+    /**
+     * 确定文本
+     */
+    confirmText?: React.ReactNode;
+    /**
+     * 取消文本
+     */
+    cancelText?: React.ReactNode;
+    /**
+     * 确定事件
+     */
+    onConfirm?: (value: string) => Promise<any>;
+    /**
+     * 取消事件
+     */
+    onCancel?: Function;
+    /**
+     * 默认内容
+     */
+    defaultValue?: string;
+    /**
+     * 占位符文本
+     */
+    placeholder?: string;
+    /**
+     * 验证函数
+     * 验证成功返回true, 严重失败返回失败原因字符串
+     */
+    valid?: (val: string) => boolean | string;
 }

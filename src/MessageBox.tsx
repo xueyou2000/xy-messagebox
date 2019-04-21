@@ -9,7 +9,6 @@ export function MessageBox(props: MessageBoxProps) {
         className,
         style,
         initialFocus,
-        initTranstion = true,
         getContainer,
         fixed = true,
         showMask = true,
@@ -24,7 +23,8 @@ export function MessageBox(props: MessageBoxProps) {
     } = props;
     const [renderPortal] = usePortal("", getContainer);
     const [visible, setVisible, isControll] = useControll(props, "visible", "defaultVisible");
-    const [ref, state] = useTranstion(visible, initTranstion);
+    const [ref, state] = useTranstion(visible);
+
     const opening = state.indexOf("en") !== -1;
     const focusElementRef = useRef<HTMLElement>();
     const firstFlagRef = useRef(visible);
@@ -32,6 +32,7 @@ export function MessageBox(props: MessageBoxProps) {
         [`${prefixCls}-open`]: opening,
         "use-container": !fixed,
     });
+
 
     function handleChange(_open: boolean) {
         if (!isControll) {

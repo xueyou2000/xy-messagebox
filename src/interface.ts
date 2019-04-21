@@ -21,10 +21,6 @@ export interface MessageBoxProps {
      */
     visible?: boolean;
     /**
-     * 是否初始化动画
-     */
-    initTranstion?: boolean;
-    /**
      * 否默认显示
      */
     defaultVisible?: boolean;

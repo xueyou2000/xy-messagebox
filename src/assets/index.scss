@@ -78,6 +78,7 @@ $--color-error: #f5222d !default;
     }
 }
 
+.#{$MessageBoxWarpPrefixCls}-state-unmounted,
 .#{$MessageBoxWarpPrefixCls}-state-exited {
     display: none;
 }

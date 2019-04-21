@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import React, { useEffect, useRef } from "react";
-import { ENTERED, ENTERING, EXITED, useControll, usePortal, useTranstion } from "utils-hooks";
+import { ENTERED, ENTERING, EXITED, useControll, usePortal, useTranstion, useMount } from "utils-hooks";
 import { MessageBoxProps } from "./interface";
 
 export function MessageBox(props: MessageBoxProps) {
@@ -9,7 +9,7 @@ export function MessageBox(props: MessageBoxProps) {
         className,
         style,
         initialFocus,
-        initTranstion = false,
+        initTranstion = true,
         getContainer,
         fixed = true,
         showMask = true,
@@ -27,6 +27,7 @@ export function MessageBox(props: MessageBoxProps) {
     const [ref, state] = useTranstion(visible, initTranstion);
     const opening = state.indexOf("en") !== -1;
     const focusElementRef = useRef<HTMLElement>();
+    const firstFlagRef = useRef(visible);
     const classString = classNames(prefixCls, className, `${prefixCls}-state-${state}`, {
         [`${prefixCls}-open`]: opening,
         "use-container": !fixed,
@@ -48,10 +49,8 @@ export function MessageBox(props: MessageBoxProps) {
     }
 
     function handleKeyDown(e: React.KeyboardEvent<HTMLDivElement>) {
-        if (e.key === "Esc" || e.keyCode === 27) {
-            if (closeOnPressEsc) {
-                handleChange(false);
-            }
+        if (e.key === "Esc" || e.keyCode === 27 && closeOnPressEsc) {
+            handleChange(false);
         }
 
         if (onKeyDown) {
@@ -67,6 +66,7 @@ export function MessageBox(props: MessageBoxProps) {
         if (state === ENTERING) {
             focusElementRef.current = document.activeElement as HTMLElement;
         } else if (state === ENTERED && initialFocus) {
+            firstFlagRef.current = true;
             const initialFocusEle = (ref.current as HTMLElement).querySelector(initialFocus) as HTMLElement;
             if (initialFocusEle) {
                 initialFocusEle.focus();
@@ -77,11 +77,14 @@ export function MessageBox(props: MessageBoxProps) {
             if (focusElementRef.current) {
                 focusElementRef.current.focus();
             }
-            if (onUnmount) {
-                onUnmount();
-            }
-            if (onClose) {
-                onClose();
+            // Tips: 排除第一次可视为false的时, 不触发这些事件
+            if (firstFlagRef.current === true) {
+                if (onUnmount) {
+                    onUnmount();
+                }
+                if (onClose) {
+                    onClose();
+                }
             }
         }
     }, [state]);

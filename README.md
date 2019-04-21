@@ -33,11 +33,22 @@ yarn add xy-messagebox
 
 ## 使用
 
-```ts
+```tsx
 import React from "react";
 import ReactDOM from "react-dom";
-import XyMessagebox from "xy-messagebox";
-ReactDOM.render(<XyMessagebox />, container);
+import { MessageBox, Alert, Confirm, Prompt, MessageBoxLocal, MessageBoxPopup } from "xy-messagebox";
+ReactDOM.render(<Alert title="警告" message="确定退出系统吗?" />, container);
+```
+
+js调用
+```tsx
+        var close = MessageBoxPopup.Alert({
+            title: '提示',
+            message: <p>这是提示 <a onClick={() => close()}>关闭</a></p>,
+            onClose: () => {
+                console.log('关闭了');
+            }
+        });
 ```
 
 ## 开发

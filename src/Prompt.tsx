@@ -85,7 +85,7 @@ export function Prompt(props: PromptProps) {
                 </div>
 
                 <div className="alert-footer">
-                    <Button type="text" onClick={closeHandle}>
+                    <Button className="cancel-btn" type="text" onClick={closeHandle}>
                         {cancelText}
                     </Button>
                     <Button className="confirm-btn" loading={loading} onClick={confirmHandle} type="primary">

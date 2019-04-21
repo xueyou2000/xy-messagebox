@@ -66,11 +66,6 @@ export interface MessageBoxProps {
      */
     onKeyDown?: (event: React.KeyboardEvent<HTMLDivElement>) => void;
     /**
-     * 键盘事件
-     * @description 可用于Esc关闭对话框
-     */
-    onKeyPress?: (event: React.KeyboardEvent<HTMLDivElement>) => void;
-    /**
      * 对话框关闭动画结束
      */
     onUnmount?: Function;
@@ -97,10 +92,6 @@ export interface AlertProps extends MessageBoxProps {
      * 图标类型
      */
     type?: MessageBoxType;
-    /**
-     * 关闭事件
-     */
-    onClose?: Function;
     /**
      * 确定按钮文本
      */

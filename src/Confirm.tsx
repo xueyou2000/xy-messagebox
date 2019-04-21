@@ -52,7 +52,7 @@ export function Confirm(props: ConfirmProps) {
     function renderFooter() {
         return (
             <React.Fragment>
-                <Button type="text" onClick={closeHandle}>
+                <Button className="cancel-btn" type="text" onClick={closeHandle}>
                     {cancelText}
                 </Button>
                 <Button className="confirm-btn" loading={loading} onClick={confirmHandle} type="primary">

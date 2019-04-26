@@ -1,6 +1,6 @@
 {
     "name": "xy-messagebox",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "基于React的弹出框组件",
     "types": "es/index.d.ts",
     "main": "es/index.js",
@@ -10,7 +10,7 @@
     "files": [
         "es",
         "dist",
-        "assets/*.css"
+        "assets"
     ],
     "scripts": {
         "test": "quick-react-scripts test",
@@ -59,8 +59,8 @@
         "classnames": "^2.2.6",
         "react": "^16.8.2",
         "react-dom": "^16.8.2",
-        "utils-hooks": "0.0.63",
-        "xy-button": "^0.0.2"
+        "utils-hooks": "0.0.65",
+        "xy-button": "0.0.3"
     },
     "repository": {
         "type": "git",
@@ -68,7 +68,7 @@
     },
     "jest": {
         "transformIgnorePatterns": [
-            "<rootDir>/node_modules/(?!(utils-hooks|xy-button|@fortawesome/react-fontawesome|@fortawesome/free-regular-svg-icons))"
+            "<rootDir>/node_modules/(?!(utils-hooks|xy-button))"
         ]
     }
 }

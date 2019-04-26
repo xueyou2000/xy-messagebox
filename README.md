@@ -25,10 +25,10 @@
 
 ```sh
 # npm
-npm install --save xy-messagebox
+npm install --save xy-messagebox xy-button utils-hooks classnames @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
 
 # yarn
-yarn add xy-messagebox
+yarn add xy-messagebox xy-button utils-hooks classnames @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
 ```
 
 ## 使用
@@ -40,15 +40,20 @@ import { MessageBox, Alert, Confirm, Prompt, MessageBoxLocal, MessageBoxPopup } 
 ReactDOM.render(<Alert title="警告" message="确定退出系统吗?" />, container);
 ```
 
-js调用
+js 调用
+
 ```tsx
-        var close = MessageBoxPopup.Alert({
-            title: '提示',
-            message: <p>这是提示 <a onClick={() => close()}>关闭</a></p>,
-            onClose: () => {
-                console.log('关闭了');
-            }
-        });
+var close = MessageBoxPopup.Alert({
+    title: "提示",
+    message: (
+        <p>
+            这是提示 <a onClick={() => close()}>关闭</a>
+        </p>
+    ),
+    onClose: () => {
+        console.log("关闭了");
+    }
+});
 ```
 
 ## 开发

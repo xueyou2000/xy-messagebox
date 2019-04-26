@@ -10890,10 +10890,10 @@ utila@^0.4.0, utila@~0.4:
   resolved "http://registry.npm.taobao.org/utila/download/utila-0.4.0.tgz#8a16a05d445657a3aea5eecc5b12a4fa5379772c"
   integrity sha1-ihagXURWV6Oupe7MWxKk+lN5dyw=
 
-utils-hooks@0.0.63:
-  version "0.0.63"
-  resolved "http://registry.npm.taobao.org/utils-hooks/download/utils-hooks-0.0.63.tgz#067c90e9f9278291e841d1a0a85b9e0733275fe3"
-  integrity sha1-BnyQ6fkngpHoQdGgqFueBzMnX+M=
+utils-hooks@0.0.65:
+  version "0.0.65"
+  resolved "https://registry.npm.taobao.org/utils-hooks/download/utils-hooks-0.0.65.tgz#abb9e24413ebee7ef3e563b1967e890ba4e077dc"
+  integrity sha1-q7niRBPr7n7z5WOxln6JC6Tgd9w=
 
 utils-merge@1.0.1:
   version "1.0.1"
@@ -11298,10 +11298,10 @@ xtend@^4.0.0, xtend@^4.0.1, xtend@~4.0.1:
   resolved "http://registry.npm.taobao.org/xtend/download/xtend-4.0.1.tgz#a5c6d532be656e23db820efb943a1f04998d63af"
   integrity sha1-pcbVMr5lbiPbgg77lDofBJmNY68=
 
-xy-button@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.npmjs.org/xy-button/-/xy-button-0.0.2.tgz#a8cdae5ef68a9eefaa327e675c83573c8b733072"
-  integrity sha512-/d2C2I7XKdxB6PtCNg5kLZ9RrfRAUVW9UrOU2Af+eOsOI70T4XuTvgUD7hZk7zWhKrZJIIRYMj3D6kr/BGQrkA==
+xy-button@0.0.3:
+  version "0.0.3"
+  resolved "https://registry.npm.taobao.org/xy-button/download/xy-button-0.0.3.tgz#2704678e6e3ec1225260771a56b52bf19f8540e1"
+  integrity sha1-JwRnjm4+wSJSYHcaVrUr8Z+FQOE=
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.17"
     "@fortawesome/free-solid-svg-icons" "^5.8.1"

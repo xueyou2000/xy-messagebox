@@ -12,7 +12,6 @@ $--color-warning: #faad14 !default;
 // error 色调
 $--color-error: #f5222d !default;
 
-
 .#{$MessageBoxWarpPrefixCls} {
     position: fixed;
     top: 0;
@@ -50,7 +49,8 @@ $--color-error: #f5222d !default;
         animation: 0.3s messageboxZoomOut;
         transition: transform 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86), opacity 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86), box-shaow 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
         pointer-events: auto;
-        
+        padding: 10px 0;
+
         &:focus {
             outline: none;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.175);
@@ -223,7 +223,6 @@ $--color-error: #f5222d !default;
         margin: 10px 0 0 0;
     }
 }
-
 
 .icon-type-info {
     color: $--color-info;

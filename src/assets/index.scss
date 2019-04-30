@@ -37,23 +37,23 @@ $--color-error: #f5222d !default;
         left: 0;
         top: 0;
         display: flex;
-        justify-content: center;
+        justify-content: end;
         align-items: center;
-        overflow: auto;
         box-sizing: border-box;
         flex-wrap: wrap;
-        pointer-events: none;
+        overflow: auto;
     }
 
     .#{$MessageBoxWarpPrefixCls}-content {
         animation: 0.3s messageboxZoomOut;
         transition: transform 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86), opacity 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86), box-shaow 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
         pointer-events: auto;
-        padding: 10px 0;
+        padding: 10px;
+        margin: auto;
+        box-sizing: border-box;
 
         &:focus {
             outline: none;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.175);
         }
     }
 }

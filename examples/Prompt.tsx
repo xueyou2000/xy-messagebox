@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Prompt } from "../src";
+import "../src/assets/index";
 import { Button } from "xy-button";
 import "xy-button/assets/index.css";
 
-export default function () {
+export default function() {
     const [visible, setVisible] = useState(false);
 
     function toggle() {
@@ -20,9 +21,8 @@ export default function () {
 
     return (
         <div>
-            <h1>简单演示</h1>
             <Button onClick={toggle}>切换</Button>
-            <Prompt title="请确认" message="是否退出此系统?" onClose={() => console.log('- onClose')} onCancel={() => console.log('- onCancel')} onConfirm={confirm} visible={visible} onChange={(v) => setVisible(v)} />
+            <Prompt title="请确认" message="是否退出此系统?" onClose={() => console.log("- onClose")} onCancel={() => console.log("- onCancel")} onConfirm={confirm} visible={visible} onChange={(v) => setVisible(v)} />
         </div>
     );
 }

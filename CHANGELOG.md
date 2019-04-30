@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.0.6 (Mon Apr 29 2019)
+
+-   从`storybook`换成`xy-manual-tools`来管理 demo
+-   修复对话框溢出滚动条样式，和滚动条无法点击
+
 ## 0.0.52 (Mon Apr 29 2019)
 
 -   对话框高度大于可视高度时，增加上下边距

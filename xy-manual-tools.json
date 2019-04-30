@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Simple",
+        "title": "MessageBox对话框",
+        "desc": "基本演示MessageBox对话框"
+    },
+    {
+        "name": "Alert",
+        "title": "提示对话框",
+        "desc": "给用户一个提示通知"
+    },
+    {
+        "name": "Confirm",
+        "title": "确认对话框",
+        "desc": "用于让执行用户确认操作, 无法点击遮罩关闭对话框"
+    },
+    {
+        "name": "Prompt",
+        "title": "输入对话框",
+        "desc": "让用户输入内容，然后确认"
+    },
+    {
+        "name": "Container",
+        "title": "指定容器",
+        "desc": "对话框放在指定容器中"
+    },
+    {
+        "name": "MessageBoxPopup",
+        "title": "JS弹框",
+        "desc": "JS代码调用, 打开对话框"
+    }
+]

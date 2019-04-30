@@ -10,11 +10,11 @@ export function MessageBox(props: MessageBoxProps) {
     const [ref, state] = useTranstion(visible);
 
     const opening = state.indexOf("en") !== -1;
-    const focusElementRef = useRef<HTMLElement>();
+    const focusElementRef = useRef<HTMLElement>(null);
     const firstFlagRef = useRef(visible);
     const classString = classNames(prefixCls, className, `${prefixCls}-state-${state}`, {
         [`${prefixCls}-open`]: opening,
-        "use-container": !fixed
+        "use-container": !fixed,
     });
 
     function handleChange(_open: boolean) {
@@ -29,6 +29,14 @@ export function MessageBox(props: MessageBoxProps) {
     function handleMaskClick() {
         if (maskClose) {
             handleChange(false);
+        }
+    }
+
+    function wrapperClick(e: React.MouseEvent<HTMLElement>) {
+        const target = e.target as HTMLElement;
+        const element = ref.current as HTMLElement;
+        if (!element.contains(target) && target !== element) {
+            handleMaskClick();
         }
     }
 
@@ -85,12 +93,12 @@ export function MessageBox(props: MessageBoxProps) {
     return renderPortal(
         <div className={classString} style={style}>
             {showMask && <div className={`${prefixCls}-mask`} onClick={handleMaskClick} />}
-            <div className={`${prefixCls}-container-wrapper`}>
+            <div className={`${prefixCls}-container-wrapper`} onClick={wrapperClick}>
                 <div className={`${prefixCls}-content`} ref={ref} tabIndex={0} onKeyDown={handleKeyDown}>
                     {children}
                 </div>
             </div>
-        </div>
+        </div>,
     );
 }
 

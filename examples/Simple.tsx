@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import MessageBox from "../src/MessageBox";
-import "../src/assets/index";
 
 export default function() {
     const [visible, setVisible] = useState(false);

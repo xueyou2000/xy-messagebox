@@ -912,7 +912,7 @@
 
 "@types/prop-types@*":
   version "15.7.1"
-  resolved "http://registry.npm.taobao.org/@types/prop-types/download/@types/prop-types-15.7.1.tgz#f1a11e7babb0c3cad68100be381d1e064c68f1f6"
+  resolved "https://registry.npm.taobao.org/@types/prop-types/download/@types/prop-types-15.7.1.tgz#f1a11e7babb0c3cad68100be381d1e064c68f1f6"
   integrity sha1-8aEee6uww8rWgQC+OB0eBkxo8fY=
 
 "@types/q@^1.5.1":
@@ -2621,7 +2621,7 @@ cssstyle@^1.0.0:
 
 csstype@^2.2.0:
   version "2.6.4"
-  resolved "http://registry.npm.taobao.org/csstype/download/csstype-2.6.4.tgz#d585a6062096e324e7187f80e04f92bd0f00e37f"
+  resolved "https://registry.npm.taobao.org/csstype/download/csstype-2.6.4.tgz#d585a6062096e324e7187f80e04f92bd0f00e37f"
   integrity sha1-1YWmBiCW4yTnGH+A4E+SvQ8A438=
 
 currently-unhandled@^0.4.1:
@@ -6852,10 +6852,10 @@ querystringify@^2.1.1:
   resolved "https://registry.npm.taobao.org/querystringify/download/querystringify-2.1.1.tgz#60e5a5fd64a7f8bfa4d2ab2ed6fdf4c85bad154e"
   integrity sha1-YOWl/WSn+L+k0qsu1v30yFutFU4=
 
-quick-react-scripts@1.1.2:
-  version "1.1.2"
-  resolved "https://registry.npm.taobao.org/quick-react-scripts/download/quick-react-scripts-1.1.2.tgz#d321818465abfbc09d3d4a60e6058a0b48a42462"
-  integrity sha1-0yGBhGWr+8CdPUpg5gWKC0ikJGI=
+quick-react-scripts@1.1.4:
+  version "1.1.4"
+  resolved "https://registry.npm.taobao.org/quick-react-scripts/download/quick-react-scripts-1.1.4.tgz#e3a5e04836360190fdb5dc468cf75516ce95a8bf"
+  integrity sha1-46XgSDY2AZD9tdxGjPdVFs6VqL8=
   dependencies:
     "@babel/core" "^7.3.4"
     "@babel/preset-env" "^7.3.4"
@@ -8920,10 +8920,10 @@ xy-grid@^0.0.3:
     react-dom "^16.8.2"
     utils-hooks "0.0.65"
 
-xy-manual-tools@0.0.5:
-  version "0.0.5"
-  resolved "https://registry.npm.taobao.org/xy-manual-tools/download/xy-manual-tools-0.0.5.tgz#e61b4e2aaa9ad867082855b04ed3abcf6336c3c8"
-  integrity sha1-5htOKqqa2GcIKFWwTtOrz2M2w8g=
+xy-manual-tools@0.1.0:
+  version "0.1.0"
+  resolved "https://registry.npm.taobao.org/xy-manual-tools/download/xy-manual-tools-0.1.0.tgz#5fdf8c711ce024e741ad6c3da12bc318930db1aa"
+  integrity sha1-X9+McRzgJOdBrWw9oSvDGJMNsao=
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.17"
     "@fortawesome/free-solid-svg-icons" "^5.8.1"
@@ -8966,13 +8966,13 @@ xy-manual-tools@0.0.5:
     xy-button "^0.0.3"
     xy-divider "^0.0.2"
     xy-grid "^0.0.3"
-    xy-messagebox "0.0.52"
+    xy-messagebox "0.0.6"
     xy-model "^0.0.2"
 
-xy-messagebox@0.0.52:
-  version "0.0.52"
-  resolved "https://registry.npm.taobao.org/xy-messagebox/download/xy-messagebox-0.0.52.tgz#fe37bd7473ada91362b7d0a1974e22a6dbdd9476"
-  integrity sha1-/je9dHOtqRNit9Chl04iptvdlHY=
+xy-messagebox@0.0.6:
+  version "0.0.6"
+  resolved "https://registry.npm.taobao.org/xy-messagebox/download/xy-messagebox-0.0.6.tgz#8b1fdb4b180f261cc5c45683d179829c1852d5d7"
+  integrity sha1-ix/bSxgPJhzFxFaD0XmCnBhS1dc=
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.17"
     "@fortawesome/free-solid-svg-icons" "^5.8.1"

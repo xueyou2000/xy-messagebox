@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { MessageBoxPopup } from "../src";
-import "../src/assets/index";
 
 export default function() {
     function alert() {
@@ -13,7 +12,7 @@ export default function() {
             ),
             onClose: () => {
                 console.log("关闭了");
-            },
+            }
         });
     }
 
@@ -38,7 +37,7 @@ export default function() {
                         resolve();
                     }, 1200);
                 });
-            },
+            }
         });
     }
 
@@ -67,7 +66,7 @@ export default function() {
                         resolve();
                     }, 1200);
                 });
-            },
+            }
         });
     }
 
@@ -83,7 +82,7 @@ export default function() {
             ),
             onClose: () => {
                 console.log("关闭了");
-            },
+            }
         });
     }
 

@@ -10,17 +10,12 @@
         "jsx": "react",
         "importHelpers": true,
         "strict": false,
-        "lib": [
-            "dom",
-            "esnext"
-        ],
+        "lib": ["dom", "esnext"],
         "noFallthroughCasesInSwitch": true,
         "moduleResolution": "node",
         "resolveJsonModule": true,
         "paths": {
-            "@/*": [
-                "src/*"
-            ]
+            "@/*": ["src/*"]
         },
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
@@ -28,10 +23,6 @@
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true
     },
-    "include": [
-        "src"
-    ],
-    "exclude": [
-        "node_modules"
-    ]
+    "include": ["src"],
+    "exclude": ["node_modules"]
 }

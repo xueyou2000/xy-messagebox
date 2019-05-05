@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
 import { Alert } from "../src";
-import "../src/assets/index";
 import { Button } from "xy-button";
 import "xy-button/assets/index.css";
 import "./index.scss";

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Prompt } from "../src";
-import "../src/assets/index";
 import { Button } from "xy-button";
 import "xy-button/assets/index.css";
 

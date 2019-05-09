@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.0.8 (Thu May 09 2019)
+
+-   调整`MessageBox`的`z-index`
+
 ## 0.0.7 (Sun May 05 2019)
 
 -   更新`xy-manual-tools`, 修复编译 demo

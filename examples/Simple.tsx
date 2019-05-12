@@ -1,6 +1,17 @@
 import React, { useState } from "react";
 import MessageBox from "../src/MessageBox";
 
+const Content = React.memo(() => {
+    console.log("重新渲染 === Content");
+
+    return (
+        <div style={{ background: "#fff", padding: "30px" }}>
+            <h1>对话框标题</h1>
+            <p>对话框内容</p>
+        </div>
+    );
+});
+
 export default function() {
     const [visible, setVisible] = useState(false);
 
@@ -12,10 +23,7 @@ export default function() {
         <div>
             <button onClick={toggle}>切换</button>
             <MessageBox visible={visible} onChange={(v) => setVisible(v)}>
-                <div style={{ background: "#fff", padding: "30px" }}>
-                    <h1>对话框标题</h1>
-                    <p>对话框内容</p>
-                </div>
+                <Content />
             </MessageBox>
         </div>
     );

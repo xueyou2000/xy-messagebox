@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.0.9 (Sun May 12 2019)
+
+-   更新依赖
+-   避免过多的重复渲染
+
 ## 0.0.8 (Thu May 09 2019)
 
 -   调整`MessageBox`的`z-index`

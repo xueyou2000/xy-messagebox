@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useCallback } from "react";
 import { Button } from "xy-button";
 import "xy-button/assets/index.css";
 import Alert from "./Alert";
@@ -8,31 +8,42 @@ import { MessageBoxLocal } from "./Locale";
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 
 export function Confirm(props: ConfirmProps) {
-    const { prefixCls = "xy-messagebox-confirm", className, style, initialFocus = ".confirm-btn", title = MessageBoxLocal.confirmTitle, confirmText = MessageBoxLocal.confirmText, cancelText = MessageBoxLocal.cancelText, onConfirm, onCancel, ...rest } = props;
+    const {
+        prefixCls = "xy-messagebox-confirm",
+        className,
+        style,
+        initialFocus = ".confirm-btn",
+        title = MessageBoxLocal.confirmTitle,
+        confirmText = MessageBoxLocal.confirmText,
+        cancelText = MessageBoxLocal.cancelText,
+        onConfirm,
+        onCancel,
+        ...rest
+    } = props;
     const [loading, setLoading] = useState(false);
     let closeFunc: Function;
 
-    function getCloseFunc(close: Function) {
+    const getCloseFunc = useCallback((close: Function) => {
         closeFunc = close;
         if (props.getCloseFunc) {
             props.getCloseFunc(close);
         }
-    }
+    }, []);
 
-    function close() {
+    const close = useCallback(() => {
         if (closeFunc) {
             closeFunc();
         }
-    }
+    }, []);
 
-    function closeHandle() {
+    const closeHandle = useCallback(() => {
         if (onCancel) {
             onCancel();
         }
         close();
-    }
+    }, []);
 
-    function confirmHandle() {
+    const confirmHandle = useCallback(() => {
         if (onConfirm) {
             setLoading(true);
             onConfirm()
@@ -43,11 +54,11 @@ export function Confirm(props: ConfirmProps) {
                 .catch(() => {
                     setLoading(false);
                     close();
-                })
+                });
         } else {
             close();
         }
-    }
+    }, []);
 
     function renderFooter() {
         return (
@@ -62,9 +73,7 @@ export function Confirm(props: ConfirmProps) {
         );
     }
 
-    return (
-        <Alert {...rest} title={title} footer={renderFooter()} initialFocus={initialFocus} getCloseFunc={getCloseFunc} type={faQuestionCircle} className={classNames(prefixCls, className)} style={style} />
-    );
+    return <Alert {...rest} title={title} footer={renderFooter()} initialFocus={initialFocus} getCloseFunc={getCloseFunc} type={faQuestionCircle} className={classNames(prefixCls, className)} style={style} />;
 }
 
 export default React.memo(Confirm);

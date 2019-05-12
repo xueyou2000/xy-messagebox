@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useCallback } from "react";
 import { ENTERED, ENTERING, EXITED, useControll, usePortal, useTranstion, useMount } from "utils-hooks";
 import { MessageBoxProps } from "./interface";
 
@@ -8,7 +8,6 @@ export function MessageBox(props: MessageBoxProps) {
     const [renderPortal, container] = usePortal("", getContainer);
     const [visible, setVisible, isControll] = useControll(props, "visible", "defaultVisible");
     const [ref, state] = useTranstion(visible);
-
     const opening = state.indexOf("en") !== -1;
     const focusElementRef = useRef<HTMLElement>(null);
     const firstFlagRef = useRef(visible);
@@ -32,15 +31,15 @@ export function MessageBox(props: MessageBoxProps) {
         }
     }
 
-    function wrapperClick(e: React.MouseEvent<HTMLElement>) {
+    const wrapperClick = useCallback((e: React.MouseEvent<HTMLElement>) => {
         const target = e.target as HTMLElement;
         const element = ref.current as HTMLElement;
         if (!element.contains(target) && target !== element) {
             handleMaskClick();
         }
-    }
+    }, []);
 
-    function handleKeyDown(e: React.KeyboardEvent<HTMLDivElement>) {
+    const handleKeyDown = useCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
         if (e.key === "Esc" || (e.keyCode === 27 && closeOnPressEsc)) {
             handleChange(false);
         }
@@ -48,7 +47,7 @@ export function MessageBox(props: MessageBoxProps) {
         if (onKeyDown) {
             onKeyDown(e);
         }
-    }
+    }, []);
 
     if (getCloseFunc) {
         getCloseFunc(() => handleChange(false));

@@ -20,7 +20,6 @@ function popup(Compoment: React.FunctionComponent<MessageBoxProps>, config: Mess
                 closeFunc = close;
             }}
             onUnmount={(args) => {
-                console.log("关闭参数", args);
                 ReactDOM.unmountComponentAtNode(div);
                 div.parentNode.removeChild(div);
             }}

@@ -1,6 +1,6 @@
 {
     "name": "xy-messagebox",
-    "version": "0.0.92",
+    "version": "0.0.93",
     "description": "基于React的弹出框组件",
     "types": "es/index.d.ts",
     "main": "es/index.js",

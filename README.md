@@ -16,7 +16,7 @@
 
 ```bash
 # yarn
-yarn add xy-messagebox xy-button utils-hooks classnames @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
+yarn add xy-messagebox
 ```
 
 ## 使用例子

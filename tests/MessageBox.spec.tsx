@@ -1,5 +1,5 @@
 import React from "react";
-import { render, fireEvent, act } from "react-testing-library";
+import { render, fireEvent, act } from "@testing-library/react";
 import { MessageBox } from "../src";
 
 describe("MessageBox", () => {
@@ -11,7 +11,7 @@ describe("MessageBox", () => {
             <MessageBox getContainer={container}>
                 <p>Hello</p>
             </MessageBox>,
-            { container }
+            { container },
         );
         const p = wrapper.getByText("Hello");
         expect(p.textContent).toBe("Hello");
@@ -25,13 +25,13 @@ describe("MessageBox", () => {
             <MessageBox fixed={false} visible={false} getContainer={container}>
                 <p>Hello</p>
             </MessageBox>,
-            { container }
+            { container },
         );
         expect(container.style.overflow).toBe("auto");
         wrapper.rerender(
             <MessageBox fixed={false} visible={true} getContainer={container}>
                 <p>Hello</p>
-            </MessageBox>
+            </MessageBox>,
         );
         expect(container.style.overflow).toBe("hidden");
 
@@ -39,13 +39,13 @@ describe("MessageBox", () => {
             <MessageBox visible={false} getContainer={container}>
                 <p>Hello</p>
             </MessageBox>,
-            { container }
+            { container },
         );
         expect(document.body.style.overflow).toBe("auto");
         wrapper2.rerender(
             <MessageBox visible={true} getContainer={container}>
                 <p>Hello</p>
-            </MessageBox>
+            </MessageBox>,
         );
         expect(document.body.style.overflow).toBe("hidden");
     });
@@ -61,7 +61,7 @@ describe("MessageBox", () => {
                     <button className="btn">对话框内按钮</button>
                 </MessageBox>
             </div>,
-            { container }
+            { container },
         );
         const outBtn = wrapper.getByText("对话框外面的按钮");
         outBtn.focus();
@@ -73,7 +73,7 @@ describe("MessageBox", () => {
                 <MessageBox visible={true} getContainer={container} initialFocus=".btn">
                     <button className="btn">对话框内按钮</button>
                 </MessageBox>
-            </div>
+            </div>,
         );
 
         fireEvent.transitionEnd(container.querySelector(".xy-messagebox-content"));
@@ -86,7 +86,7 @@ describe("MessageBox", () => {
                 <MessageBox visible={false} getContainer={container} initialFocus=".btn">
                     <button className="btn">对话框内按钮</button>
                 </MessageBox>
-            </div>
+            </div>,
         );
 
         fireEvent.transitionEnd(container.querySelector(".xy-messagebox-content"));
@@ -101,7 +101,7 @@ describe("MessageBox", () => {
             <MessageBox visible={false} fixed={false} getContainer={container}>
                 abc
             </MessageBox>,
-            { container }
+            { container },
         );
 
         const messagebox = container.querySelector(".xy-messagebox");
@@ -116,7 +116,7 @@ describe("MessageBox", () => {
             <MessageBox visible={false} showMask={false} getContainer={container}>
                 abc
             </MessageBox>,
-            { container }
+            { container },
         );
 
         expect(container.querySelector(".xy-messagebox-mask")).toBeNull();
@@ -130,7 +130,7 @@ describe("MessageBox", () => {
             <MessageBox defaultVisible={true} getContainer={container}>
                 abc
             </MessageBox>,
-            { container }
+            { container },
         );
 
         expect(container.querySelector(".xy-messagebox-mask")).not.toBeNull();
@@ -147,7 +147,7 @@ describe("MessageBox", () => {
             <MessageBox defaultVisible={true} maskClose={false} getContainer={container}>
                 abc
             </MessageBox>,
-            { container }
+            { container },
         );
 
         expect(container.querySelector(".xy-messagebox-mask")).not.toBeNull();
@@ -164,7 +164,7 @@ describe("MessageBox", () => {
             <MessageBox defaultVisible={true} getContainer={container}>
                 abc
             </MessageBox>,
-            { container }
+            { container },
         );
 
         fireEvent.keyDown(container.querySelector(".xy-messagebox-content"), { keyCode: 27 });
@@ -184,7 +184,7 @@ describe("MessageBox", () => {
             <MessageBox defaultVisible={true} onChange={onChange} onKeyDown={onKeyDown} onUnmount={onUnmount} onClose={onClose} getContainer={container}>
                 abc
             </MessageBox>,
-            { container }
+            { container },
         );
         const messagebox = container.querySelector(".xy-messagebox");
         fireEvent.keyDown(container.querySelector(".xy-messagebox-content"), { keyCode: 33 });
@@ -209,7 +209,7 @@ describe("MessageBox", () => {
             <MessageBox defaultVisible={true} getCloseFunc={(c) => (close = c)} getContainer={container}>
                 abc
             </MessageBox>,
-            { container }
+            { container },
         );
         const messagebox = container.querySelector(".xy-messagebox");
         act(() => close());

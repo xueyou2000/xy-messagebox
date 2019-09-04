@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import MessageBox from "../src/MessageBox";
 
 const Content = React.memo(() => {
-    console.log("重新渲染 === Content");
-
     return (
         <div style={{ background: "#fff", padding: "30px" }}>
             <h1>对话框标题</h1>

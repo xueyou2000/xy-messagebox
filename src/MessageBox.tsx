@@ -4,7 +4,23 @@ import { ENTERED, ENTERING, EXITED, useControll, usePortal, useTranstion, useMou
 import { MessageBoxProps } from "./interface";
 
 export function MessageBox(props: MessageBoxProps) {
-    const { prefixCls = "xy-messagebox", className, style, initialFocus, getContainer, fixed = true, showMask = true, maskClose = true, onChange, children, onUnmount, onClose, closeOnPressEsc = true, onKeyDown, getCloseFunc } = props;
+    const {
+        prefixCls = "xy-messagebox",
+        className,
+        style,
+        initialFocus,
+        getContainer,
+        fixed = true,
+        showMask = true,
+        maskClose = true,
+        onChange,
+        children,
+        onUnmount,
+        onClose,
+        closeOnPressEsc = true,
+        onKeyDown,
+        getCloseFunc,
+    } = props;
     const [renderPortal, container] = usePortal("", getContainer);
     const [visible, setVisible, isControll] = useControll(props, "visible", "defaultVisible");
     const [ref, state] = useTranstion(visible);
@@ -15,6 +31,8 @@ export function MessageBox(props: MessageBoxProps) {
         [`${prefixCls}-open`]: opening,
         "use-container": !fixed,
     });
+    // 关闭函数传递参数，用于传递给onUnmount
+    const args = useRef(null);
 
     function handleChange(_open: boolean) {
         if (!isControll) {
@@ -50,7 +68,10 @@ export function MessageBox(props: MessageBoxProps) {
     }, []);
 
     if (getCloseFunc) {
-        getCloseFunc(() => handleChange(false));
+        getCloseFunc((_: any) => {
+            args.current = _;
+            handleChange(false);
+        });
     }
 
     useEffect(() => {
@@ -65,11 +86,13 @@ export function MessageBox(props: MessageBoxProps) {
 
         if (state === ENTERING) {
             focusElementRef.current = document.activeElement as HTMLElement;
-        } else if (state === ENTERED && initialFocus) {
+        } else if (state === ENTERED) {
             firstFlagRef.current = true;
-            const initialFocusEle = (ref.current as HTMLElement).querySelector(initialFocus) as HTMLElement;
-            if (initialFocusEle) {
-                initialFocusEle.focus();
+            if (initialFocus) {
+                const initialFocusEle = (ref.current as HTMLElement).querySelector(initialFocus) as HTMLElement;
+                if (initialFocusEle) {
+                    initialFocusEle.focus();
+                }
             }
         }
         // 关闭动画完毕触发onUnmount事件
@@ -80,7 +103,7 @@ export function MessageBox(props: MessageBoxProps) {
             // Tips: 排除第一次可视为false的时, 不触发这些事件
             if (firstFlagRef.current === true) {
                 if (onUnmount) {
-                    onUnmount();
+                    onUnmount(args.current);
                 }
                 if (onClose) {
                     onClose();

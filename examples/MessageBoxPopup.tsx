@@ -7,12 +7,12 @@ export default function() {
             title: "提示",
             message: (
                 <p>
-                    这是提示 <a onClick={() => close()}>关闭</a>
+                    这是提示 <a onClick={() => close("alert 关闭")}>关闭</a>
                 </p>
             ),
             onClose: () => {
                 console.log("关闭了");
-            }
+            },
         });
     }
 
@@ -21,7 +21,7 @@ export default function() {
             title: "请确认",
             message: (
                 <p>
-                    是否退出此系统? <a onClick={() => close()}>关闭</a>
+                    是否退出此系统? <a onClick={() => close("confirm 关闭")}>关闭</a>
                 </p>
             ),
             onClose: () => {
@@ -37,7 +37,7 @@ export default function() {
                         resolve();
                     }, 1200);
                 });
-            }
+            },
         });
     }
 
@@ -46,7 +46,7 @@ export default function() {
             title: "请确认",
             message: (
                 <p>
-                    请输入水果2个字? <a onClick={() => close()}>关闭</a>
+                    请输入水果2个字? <a onClick={() => close("prompt 关闭")}>关闭</a>
                 </p>
             ),
             defaultValue: "蔬菜",
@@ -66,7 +66,7 @@ export default function() {
                         resolve();
                     }, 1200);
                 });
-            }
+            },
         });
     }
 
@@ -77,12 +77,12 @@ export default function() {
                     <p>一句话</p>
                     <p>二句话</p>
                     <p>三句话</p>
-                    <a onClick={() => close()}>关闭</a>
+                    <a onClick={() => close("messgebox 关闭")}>关闭</a>
                 </div>
             ),
             onClose: () => {
                 console.log("关闭了");
-            }
+            },
         });
     }
 

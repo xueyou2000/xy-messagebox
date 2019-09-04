@@ -17,11 +17,18 @@ export default function() {
         setVisible((v) => !v);
     }
 
+    let closeFunc: Function;
+
+    function getCloseFunc(close: Function) {
+        closeFunc = close;
+    }
+
     return (
         <div>
             <button onClick={toggle}>切换</button>
-            <MessageBox visible={visible} onChange={(v) => setVisible(v)}>
+            <MessageBox visible={visible} onChange={(v) => setVisible(v)} getCloseFunc={getCloseFunc} onUnmount={(args: any) => console.log("onUnmount--------", args)}>
                 <Content />
+                <button onClick={() => closeFunc("123")}>测试</button>
             </MessageBox>
         </div>
     );

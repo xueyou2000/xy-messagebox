@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 import ReactDOM from "react-dom";
 import AlertComponent from "./Alert";
 import ConfirmComponent from "./Confirm";
-import { AlertProps, ConfirmProps, MessageBoxProps, PromptProps } from './interface';
+import { AlertProps, ConfirmProps, MessageBoxProps, PromptProps } from "./interface";
 import MessageBoxComponent from "./MessageBox";
 import PromptComponent from "./Prompt";
 
@@ -19,7 +19,8 @@ function popup(Compoment: React.FunctionComponent<MessageBoxProps>, config: Mess
             getCloseFunc={(close) => {
                 closeFunc = close;
             }}
-            onUnmount={() => {
+            onUnmount={(args) => {
+                console.log("关闭参数", args);
                 ReactDOM.unmountComponentAtNode(div);
                 div.parentNode.removeChild(div);
             }}
@@ -27,15 +28,14 @@ function popup(Compoment: React.FunctionComponent<MessageBoxProps>, config: Mess
         div,
     );
 
-    return () => {
+    return (args?: any) => {
         if (closeFunc) {
-            closeFunc();
+            closeFunc(args);
         }
     };
 }
 
 class MessageBoxPopup {
-
     /**
      * 弹出Alert对话框
      * @param config 配置
@@ -71,8 +71,6 @@ class MessageBoxPopup {
     static Native(config: MessageBoxProps) {
         return popup(MessageBoxComponent, config);
     }
-
 }
-
 
 export default MessageBoxPopup;

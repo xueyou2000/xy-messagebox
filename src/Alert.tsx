@@ -5,7 +5,7 @@ import React, { useCallback } from "react";
 import { Button } from "xy-button";
 import "xy-button/assets/index.css";
 import { AlertProps, MessageBoxType } from "./interface";
-import { MessageBoxLocal } from "./Locale";
+import { getLocal } from "./local";
 import MessageBox from "./MessageBox";
 
 function getIcon(type: MessageBoxType): IconDefinition {
@@ -47,7 +47,7 @@ const AlertBody = React.memo(({ type, title, message }: { type: MessageBoxType; 
 });
 
 export function Alert(props: AlertProps) {
-    const { prefixCls = "xy-messagebox-alert", className, initialFocus = ".alert-btn", footer, confirmText = MessageBoxLocal.confirmText, style, title, message, children, type = "info", ...rest } = props;
+    const { prefixCls = "xy-messagebox-alert", className, initialFocus = ".alert-btn", footer, confirmText = getLocal().MessageBox.confirm, style, title, message, children, type = "info", ...rest } = props;
     let closeFunc: Function;
 
     const getCloseFunc = useCallback((close: Function) => {

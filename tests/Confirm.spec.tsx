@@ -1,6 +1,7 @@
 import React from "react";
 import { render, fireEvent, act } from "@testing-library/react";
-import { Confirm, MessageBoxLocal } from "../src";
+import { Confirm } from "../src";
+import Zh from "../src/local/zh";
 
 describe("Confirm", () => {
     test("render", () => {
@@ -11,9 +12,9 @@ describe("Confirm", () => {
         const message = wrapper.getByText("消息");
         expect(message.classList.contains("alert-content__message")).toBeTruthy();
 
-        expect(container.querySelector(".confirm-btn").textContent).toBe(MessageBoxLocal.confirmText);
-        expect(container.querySelector(".cancel-btn").textContent).toBe(MessageBoxLocal.cancelText);
-        expect(container.querySelector(".alert-content__title").textContent).toBe(MessageBoxLocal.confirmTitle);
+        expect(container.querySelector(".confirm-btn").textContent).toBe(Zh.MessageBox.confirm);
+        expect(container.querySelector(".cancel-btn").textContent).toBe(Zh.MessageBox.cancel);
+        expect(container.querySelector(".alert-content__title").textContent).toBe(Zh.MessageBox.title);
     });
 
     test("constomze btn text", () => {

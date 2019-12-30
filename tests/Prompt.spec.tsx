@@ -1,6 +1,7 @@
 import React from "react";
 import { render, fireEvent, act } from "@testing-library/react";
-import { Prompt, MessageBoxLocal } from "../src";
+import { Prompt } from "../src";
+import Zh from "../src/local/zh";
 
 describe("Prompt", () => {
     test("render", () => {
@@ -8,9 +9,9 @@ describe("Prompt", () => {
         document.body.append(container);
         const wrapper = render(<Prompt message="消息" getContainer={container} />, { container });
         const title = container.querySelector(".prompt-title");
-        expect(title.textContent).toBe(MessageBoxLocal.promptTitle);
-        expect(container.querySelector(".confirm-btn").textContent).toBe(MessageBoxLocal.confirmText);
-        expect(container.querySelector(".cancel-btn").textContent).toBe(MessageBoxLocal.cancelText);
+        expect(title.textContent).toBe(Zh.MessageBox.title);
+        expect(container.querySelector(".confirm-btn").textContent).toBe(Zh.MessageBox.confirm);
+        expect(container.querySelector(".cancel-btn").textContent).toBe(Zh.MessageBox.cancel);
     });
 
     test("default value", () => {

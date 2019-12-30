@@ -1,7 +1,8 @@
 import React from "react";
 import { render, fireEvent, act } from "@testing-library/react";
 import { faAddressBook } from "@fortawesome/free-solid-svg-icons";
-import { Alert, MessageBoxLocal } from "../src";
+import { Alert } from "../src";
+import Zh from "../src/local/zh";
 
 describe("Alert", () => {
     test("render", () => {
@@ -15,7 +16,7 @@ describe("Alert", () => {
         expect(title.classList.contains("alert-content__title")).toBeTruthy();
         expect(message.classList.contains("alert-content__message")).toBeTruthy();
 
-        expect(container.querySelector(".alert-btn").textContent).toBe(MessageBoxLocal.confirmText);
+        expect(container.querySelector(".alert-btn").textContent).toBe(Zh.MessageBox.confirm);
     });
 
     test("icon type", () => {

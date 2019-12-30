@@ -4,7 +4,7 @@ import { Button } from "xy-button";
 import "xy-button/assets/index.css";
 import MessageBox from "./MessageBox";
 import { PromptProps } from "./interface";
-import { MessageBoxLocal } from "./Locale";
+import { getLocal } from "./local";
 
 /**
  * 默认验证
@@ -12,7 +12,7 @@ import { MessageBoxLocal } from "./Locale";
  */
 function DefaultValidate(value: string) {
     if (value === undefined || value === null || value === "") {
-        return "输入不能为空";
+        return getLocal().MessageBox.promptError;
     } else {
         return true;
     }
@@ -25,12 +25,12 @@ export function Prompt(props: PromptProps) {
         style,
         initialFocus = ".confirm-btn",
         valid = DefaultValidate,
-        title = MessageBoxLocal.promptTitle,
-        confirmText = MessageBoxLocal.confirmText,
+        title = getLocal().MessageBox.title,
+        confirmText = getLocal().MessageBox.confirm,
         placeholder,
         defaultValue,
         message,
-        cancelText = MessageBoxLocal.cancelText,
+        cancelText = getLocal().MessageBox.cancel,
         onConfirm,
         onCancel,
         ...rest

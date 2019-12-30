@@ -1,11 +1,11 @@
+import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 import classNames from "classnames";
-import React, { useRef, useState, useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { Button } from "xy-button";
 import "xy-button/assets/index.css";
 import Alert from "./Alert";
 import { ConfirmProps } from "./interface";
-import { MessageBoxLocal } from "./Locale";
-import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
+import { getLocal } from "./local";
 
 export function Confirm(props: ConfirmProps) {
     const {
@@ -13,9 +13,9 @@ export function Confirm(props: ConfirmProps) {
         className,
         style,
         initialFocus = ".confirm-btn",
-        title = MessageBoxLocal.confirmTitle,
-        confirmText = MessageBoxLocal.confirmText,
-        cancelText = MessageBoxLocal.cancelText,
+        title = getLocal().MessageBox.title,
+        confirmText = getLocal().MessageBox.confirm,
+        cancelText = getLocal().MessageBox.cancel,
         onConfirm,
         onCancel,
         ...rest
